@@ -1,29 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
-    <title>Моя перша веб-сторінка</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котики</title>
+    <style>
+        /* Flexbox для розміщення статей та aside всередині main */
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .articles {
+            flex: 70%;
+        }
+        
+        aside {
+            flex: 30%;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            padding: 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Головний заголовок сторінки</h1>
-   
-    <p>Це перший параграф тексту.</p>
-   <p>Це другий параграф тексту.</p>
-   <p>Це третій параграф тексту.</p>
-    <ul>
-        <li>Перший пункт</li>
-        <li>Другий пункт</li>
-        <li>Третій  пункт</li>
-        <li>Четвертий пункт</li>
-    </ul>
-   
-    <ol>
-        <li>First</li>
-        <li>second</li>
-        <li>third</li>
-    </ol>
-    <a href="https://music.youtube.com/watch?v=CsmXMsrMOtY&list=RDAMVM44Du3MnMwEI">посилання 1</a>
-    <a href="https://music.youtube.com/watch?v=vGib1Y5K5UM&list=RDAMVM44Du3MnMwEI">посилання 2</a>
-   
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Felis_silvestris_silvestris.jpg" alt="Cat">
+
+    <header>
+        <h1>🐱 Все про котиків</h1>
+        <p>Найкращий сайт для любителів котів</p>
+        <nav>
+            <ul>
+                <li><a href="#">Головна</a></li>
+                <li><a href="#">Породи</a></li>
+                <li><a href="#">Фото</a></li>
+                <li><a href="#">Догляд</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Цікаві статті про котів</h2>
+        <div class="main-content">
+            <div class="articles">
+                    <h3>Чому коти муркочуть?</h3>
+                    <p>Коти муркочуть, коли щасливі, але також і коли хворіють. Муркотіння допомагає їм заспокоювати себе та навіть лікувати кістки. Частота 25-150 Гц корисна для здоров'я.</p>
+                
+                    <h3>Топ-3 найрозумніших порід</h3>
+                    <p>Найрозумніші коти - це абісинська, бенгальська та сіамська породи. Вони легко вчаться командам та люблять гратися з головоломками.</p>
+
+                    <h3>Як зрозуміти кота за хвостом</h3>
+                    <p>Якщо хвіст трубою - кіт щасливий. Якщо пухнастий - боїться. Якщо б'є по боках - краще не чіпати кота.</p>
+
+            </div>
+            <aside>
+                <h2>Корисне</h2>
+                
+                <div>
+                    <h3>Пошук</h3>
+                    <form>
+                        <input type="search" placeholder="Що шукати?">
+                        <button type="submit">Шукати</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3>📱 Ми в соцмережах</h3>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>Контакти</h3>
+                <p>Email: cats@...com</p>
+                <p>Тел: +38 (066) 666-66-66</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
