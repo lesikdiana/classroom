@@ -1,199 +1,174 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Адаптивна навігація</title>
+    <title>Котики</title>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
         
-        nav {
-            background: #333;
-            padding: 15px 20px;
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
         }
         
-        .nav-header {
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 25px;
+        }
+        
+        h3 {
+            color: #e67e22;
+            font-style: italic;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .content-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .styled-list {
+            list-style-type: square;
+            margin-left: 30px;
+        }
+        
+        .styled-list li {
+            margin: 8px 0;
+            padding: 5px;
+        }
+        
+        .styled-list li:hover {
+            background-color: #e8f4f8;
+            transform: scale(1.02);
+        }
+        
+        .image-gallery {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .burger {
-            display: none;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        
-        #burger-checkbox {
-            display: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
             gap: 20px;
-            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
         
-        .nav-links li {
-            position: relative;
+        .image-gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #3498db;
+            border-radius: 10px;
+            transition: transform 0.3s;
         }
         
-        .nav-links a {
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            border-color: #e67e22;
+        }
+        
+        .link-list a {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 8px 15px;
+            background-color: #3498db;
             color: white;
             text-decoration: none;
-            padding: 10px;
-            display: block;
-        }
-        
-        .nav-links a:hover {
-            background: #555;
             border-radius: 5px;
+            transition: all 0.3s;
         }
         
-        .nav-links li:first-child a {
-            background: #ff6600;
-            border-radius: 5px;
+        .link-list a:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
         }
         
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #444;
-            list-style: none;
-            min-width: 150px;
-            border-radius: 5px;
-        }
-        
-        .dropdown-menu li a {
-            padding: 10px;
-        }
-        
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        
-        .search-form {
-            display: flex;
-            gap: 5px;
-        }
-        
-        .search-form input {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 3px;
-        }
-        
-        .search-form button {
-            padding: 5px 10px;
-            background: #ff6600;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #333;
             color: white;
-        }
-        
-        @media (max-width: 992px) {
-            .search-form input {
-                width: 120px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .burger {
-                display: block;
-            }
-            
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                margin-top: 15px;
-                gap: 5px;
-            }
-            
-            #burger-checkbox:checked + .burger + .nav-links {
-                display: flex;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                margin-left: 20px;
-                display: none;
-            }
-            
-            .dropdown:focus-within .dropdown-menu,
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
-            
-            .search-form {
-                width: 100%;
-            }
-            
-            .search-form input {
-                flex: 1;
-            }
+            border-radius: 8px;
         }
     </style>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <nav>
-        <div class="nav-header">
-            <a href="#" class="logo">🐱 CatSite</a>
-            <input type="checkbox" id="burger-checkbox">
-            <label for="burger-checkbox" class="burger">☰</label>
-            
-            <ul class="nav-links">
-                <li><a href="#">Головна</a></li>
-                <li><a href="#">Про нас</a></li>
-                
-                <li class="dropdown">
-                    <a href="#">Послуги ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Догляд за котами</a></li>
-                        <li><a href="#">Вигул котів</a></li>
-                        <li><a href="#">Готель для котів</a></li>
-                    </ul>
-                </li>
-                
-                <li><a href="#">Контакти</a></li>
-                
-                <li>
-                    <form class="search-form" action="#">
-                        <input type="search" placeholder="Пошук...">
-                        <button type="submit">🔍</button>
-                    </form>
-                </li>
+    <div class="container">
+        
+        <h1 style="color: #e74c3c; text-transform: uppercase; letter-spacing: 2px;">Мої улюблені котики 🐱</h1>
+        
+        <div class="content-section">
+            <h2>Чому я люблю котів?</h2>
+            <p style="font-size: 16px; line-height: 1.6; color: #555;">Коти - це неймовірні створіння, які дарують тепло та затишок. Вони мають чарівну здатність піднімати настрій та знімати стрес своїм муркотінням.</p>
+            <p>Дослідження показують, що спілкування з котами знижує кров'яний тиск та покращує емоційний стан людини.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Породи котів</h2>
+            <ul class="styled-list">
+                <li>Британська короткошерста</li>
+                <li>Шотландська висловуха</li>
+                <li>Мейн-кун</li>
+                <li>Сфінкс</li>
+                <li>Перська</li>
             </ul>
         </div>
-    </nav>
-
-    <div style="padding: 40px; text-align: center;">
-        <h1>Ласкаво просимо на сайт про котів! 🐾</h1>
-        <p>натисніть "Послуги"</p>
-        <p style="margin-top: 20px;">Активний пункт: <strong style="color: #ff6600;">Головна</strong></p>
+        
+        <div class="content-section">
+            <h2>Фотогалерея</h2>
+            <div class="image-gallery">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/960px-Cat_November_2010-1a.jpg" alt="Котик 1">
+                <img src="https://images.newscientist.com/wp-content/uploads/2025/10/22103513/SEI_270442304.jpg" alt="Котик 2">
+                <img src="https://media.4-paws.org/9/c/9/7/9c97c38666efa11b79d94619cc1db56e8c43d430/Molly_006-2829x1886-2726x1886-1920x1328.jpg" alt="Котик 3">
+                <img src="https://cdn.royalcanin-weshare-online.io/yj8HdHUBRYZmsWpckZgn/v1/ec9h-how-to-care-for-a-kitten-or-cat-hero-new-resized" alt="">
+            
+            </div>
+            <p style="text-align: center; font-style: italic; color: #777;">* Насолоджуйтесь фотографіями милих котиків</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Корисні посилання</h2>
+            <div class="link-list">
+                <a href="https://petslike.ua/blog/iak-dogliadati-za-kosheniam?srsltid=AfmBOoqpO7H1NQzf8rKrPJotQsrq1J2YVvkM7Kg8CCYlIPFfyPqn_O2F">Про догляд за котами</a>
+                <a href="https://petlink.com.ua/dostovirni-porady-dlya-zdorovya-kotiv-na-osnovi-veterynarnyh-rekomendaczij/">Поради ветеринара</a>
+                <a href="https://saymeow.ua/blog/">Котячий блог</a>
+                <a href="https://www.google.com/aclk?sa=L&ai=DChsSEwjCx4numuaUAxViZJEFHRgfMFAYACICCAEQAxoCbHI&ae=2&aspm=1&co=1&ase=2&gclid=Cj0KCQjw2_TQBhCnARIsAF3-Xhxq3QXqQ9fNGdrOBz0ivffX7hRlwQ1jsCquZvjVEtBfo44xmaMYHkoaAvF5EALw_wcB&cid=CAASugHkaMXVDc7KGROylL3vx0QsN4n08W8yRRE2pqe-4sc7ofFsNHxlRCGn2dd2yRM7HXzLFLuV0Bxzc8vrOlPWZ8Zryfzw2RhimIS0HLf7Wzj9XNOSPiJMx4MYC5R_JdQsO4UrJUCyIRkD-QY04x0il4WuQTztuWjIvNWR8uZ-Zi4Okigs_hPYXeRvtWRqq4Fbj7tsbWUilQ7GC5JdATjG3jjvDoWIZOGSgLe0XWIzbMMJDS-yiRN57uVRIaw&cce=2&category=acrcp_v1_35&sig=AOD64_1WCnf_-vsDusqYS61IyVLpufGvig&q&nis=4&adurl&ved=2ahUKEwiZhYTumuaUAxW-ExAIHVAcLH0Q0Qx6BAgTEAE">Магазин для котів</a>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h3>Цікавий факт про котів</h3>
+            <div style="background-color: #ffeaa7; padding: 15px; border-left: 8px solid #fdcb6e; margin: 15px 0;">
+                <p style="margin: 0;">Коти можуть видавати близько 100 різних звуків, тоді як собаки - лише 10!</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p style="font-size: 12px; margin-top: 10px;">Створено з любов'ю до пухнастих друзів</p>
+        </footer>
+        
     </div>
 
 </body>
